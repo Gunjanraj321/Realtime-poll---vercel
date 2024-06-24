@@ -4,6 +4,7 @@ const http = require('http');
 const { Server } = require('socket.io');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 
 const userRoutes = require('./router/userRoute');
 const pollRoutes = require('./router/pollRouter');
@@ -25,6 +26,20 @@ app.use(cors());
 app.use(userRoutes);
 app.use(pollRoutes(io));
 app.use(commentRoutes);
+
+//----------Deployement---------
+const __dirname1 = path.resolve();
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static(path.join(__dirname1, '../frontend/build')));
+    app.get('/*', (req, res) => {
+        res.sendFile(path.resolve(__dirname1, 'frontend', 'build', 'index.html'));
+        });
+}else{
+    app.get('/', (req, res) => {
+        res.send('API is running....');
+        });
+}
+//----------Deployement---------
 
 // MongoDB connection
 mongoose.connect(process.env.URI, { useNewUrlParser: true, useUnifiedTopology: true })
