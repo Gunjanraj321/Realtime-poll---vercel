@@ -23,7 +23,7 @@ const Login = () => {
   const handleSubmit = async () => {
     try {
       const response = await axios.post(
-        "https://realtime-poll.vercel.app/login",
+        "/login",
         formData
       );
       const { token, email, id } = response.data;

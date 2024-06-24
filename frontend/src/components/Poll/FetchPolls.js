@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Comments from "../Comment"; 
 
-const socket = io("https://realtime-poll.vercel.app/");
+const socket = io("/");
 
 const FetchPolls = () => {
   const [polls, setPolls] = useState([]);

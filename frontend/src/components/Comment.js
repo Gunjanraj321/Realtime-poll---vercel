@@ -36,7 +36,7 @@ const Comments = ({ pollId }) => {
 
     try {
       const response = await axios.post(
-        `https://realtime-poll.vercel.app/poll/${pollId}/comments`,
+        `/poll/${pollId}/comments`,
         { text: newComment },
         {
           headers: {

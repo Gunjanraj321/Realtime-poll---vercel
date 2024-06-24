@@ -16,7 +16,7 @@ const PollResults = () => {
 
   const fetchPollResults = async () => {
     try {
-      const response = await axios.get(`https://realtime-poll.vercel.app/poll/${pollId}/pollResult`);
+      const response = await axios.get(`/poll/${pollId}/pollResult`);
       setPollResult(response.data);
     } catch (error) {
       console.error("Error fetching poll results:", error);

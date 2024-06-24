@@ -13,7 +13,7 @@ const UserProfile = ({ userId, displayMode }) => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get(`https://realtime-poll.vercel.app/profile/${userId}`, {
+        const response = await axios.get(`/profile/${userId}`, {
           headers: {
             Authorization: `${token}`,
           },

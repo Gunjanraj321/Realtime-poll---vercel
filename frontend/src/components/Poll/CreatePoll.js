@@ -22,7 +22,7 @@ const CreatePoll = () => {
   const handleSubmit = async () => {
     try {
       await axios.post(
-        "https://realtime-poll.vercel.app/poll/createPoll",
+        "/poll/createPoll",
         { question, options },
         {
           headers: {
