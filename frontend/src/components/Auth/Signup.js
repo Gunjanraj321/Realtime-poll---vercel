@@ -24,7 +24,7 @@ const Signup = () => {
   const handleSubmit = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3001/signup",
+        "https://realtime-poll.vercel.app/signup",
         formData
       );
 

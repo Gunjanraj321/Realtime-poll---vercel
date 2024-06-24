@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Comments from "../Comment"; 
 
-const socket = io("http://localhost:3001");
+const socket = io("https://realtime-poll.vercel.app/");
 
 const FetchPolls = () => {
   const [polls, setPolls] = useState([]);
@@ -32,7 +32,7 @@ const FetchPolls = () => {
 
   const fetchPolls = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/poll");
+      const response = await axios.get("https://realtime-poll.vercel.app/poll");
       setPolls(response.data);
     } catch (error) {
       console.error("Error fetching polls:", error);
@@ -48,7 +48,7 @@ const FetchPolls = () => {
 
     try {
       await axios.post(
-        `http://localhost:3001/poll/vote/${pollId}/${optionId}`,
+        `https://realtime-poll.vercel.app/poll/vote/${pollId}/${optionId}`,
         {},
         {
           headers: {
