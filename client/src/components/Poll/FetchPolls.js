@@ -32,7 +32,7 @@ const FetchPolls = () => {
 
   const fetchPolls = async () => {
     try {
-      const response = await axios.get("https://realtime-poll.vercel.app/poll");
+      const response = await axios.get("/poll");
       setPolls(response.data);
     } catch (error) {
       console.error("Error fetching polls:", error);
@@ -48,7 +48,7 @@ const FetchPolls = () => {
 
     try {
       await axios.post(
-        `https://realtime-poll.vercel.app/poll/vote/${pollId}/${optionId}`,
+        `/poll/vote/${pollId}/${optionId}`,
         {},
         {
           headers: {
