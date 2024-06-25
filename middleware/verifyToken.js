@@ -13,7 +13,7 @@ const verify = async (req, res, next) => {
         }
     }
     catch (err) {
-        res.status(500).json('User Not Authorized');
+        return res.status(500).json('User Not Authorized');
     }
 
 }

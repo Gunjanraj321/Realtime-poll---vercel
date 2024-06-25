@@ -17,7 +17,7 @@ const Comments = ({ pollId }) => {
 
   const fetchComments = async () => {
     try {
-      const response = await axios.get(`https://realtime-poll.vercel.app/poll/${pollId}/comments`, {
+      const response = await axios.get(`/poll/${pollId}/comments`, {
         headers: {
           Authorization: `${token}`
         }

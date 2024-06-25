@@ -12,7 +12,7 @@ const createPoll = async (req, res) => {
       .json({ message: "Poll must have at least two options" });
   }
 
-  // Adding unique IDs to each option
+  // Adding unique IDs to each option using indexing
   const optionsWithId = options.map((option, index) => ({
     id: (index + 1).toString(),
     text: option.text,
@@ -62,9 +62,9 @@ const getPollResults = async (req, res) => {
 const fetchPolls = async (req, res) => {
   try {
     const polls = await Poll.find().populate("createdBy", "username");
-    res.json(polls);
+    return res.json(polls);
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    return res.status(400).json({ message: err.message });
   }
 };
 
@@ -94,10 +94,9 @@ const votePoll = (io) => async (req, res) => {
 
     io.emit("vote", poll); 
 
-    res.status(200).json({ message: "Vote cast successfully", poll });
+    return res.status(200).json({ message: "Vote cast successfully", poll });
   } catch (error) {
-    console.error(err);
-    res.status(500).json('Internal server error');
+    return res.status(500).json('Internal server error');
   }
 };
 

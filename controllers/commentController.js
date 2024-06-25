@@ -10,10 +10,9 @@ const addComment = async (req, res) => {
       poll: pollId,
       user: req.user._id,
     });
-    res.status(201).json(comment);
+    return res.status(201).json(comment);
   } catch (error) {
-    console.error("Error adding comment:", error);
-    res.status(500).json({ message: "Server Error while adding comment" });
+    return res.status(500).json({ message: "Server Error while adding comment" });
   }
 };
 
@@ -34,10 +33,9 @@ const addReply = async (req, res) => {
     });
 
     await comment.save();
-    res.status(201).json(comment);
+    return res.status(201).json(comment);
   } catch (err) {
-    console.error("Error adding reply:", err);
-    res.status(500).json({ message: "Server Error while adding reply" });
+    return res.status(500).json({ message: "Server Error while adding reply" });
   }
 };
 
@@ -49,10 +47,9 @@ const getCommentOfPoll = async (req, res) => {
       .populate("user", ["username"])
       .populate("replies.user", ["username"]);
       
-    res.status(200).json(comments);
+    return res.status(200).json(comments);
   } catch (err) {
-    console.error("Error fetching comments:", err);
-    res.status(500).json({ message: "Server Error while fetching comments" });
+    return res.status(500).json({ message: "Server Error while fetching comments" });
   }
 };
 
